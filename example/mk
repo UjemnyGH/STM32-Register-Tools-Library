@@ -1,0 +1,5 @@
+#!/bin/bash
+
+arm-none-eabi-gcc -g -static -mthumb -mcpu=cortex-m4 src/*.c -T src/linker_conf.ld -o main.elf -nostartfiles
+arm-none-eabi-objcopy -O binary main.elf main.bin
+st-flash write main.bin 0x08000000
